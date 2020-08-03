@@ -129,11 +129,6 @@ export default function buildValidations(validations = {}, globalOptions = {}) {
 
     validateAttribute() {
       return get(this, 'validations').validateAttribute(...arguments);
-    },
-
-    willDestroy() {
-      this._super(...arguments);
-      get(this, 'validations').destroy();
     }
   });
 }
