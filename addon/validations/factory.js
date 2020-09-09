@@ -129,11 +129,6 @@ export default function buildValidations(validations = {}, globalOptions = {}) {
 
     validateAttribute() {
       return get(this, 'validations').validateAttribute(...arguments);
-    },
-
-    destroy() {
-      this._super(...arguments);
-      get(this, 'validations').destroy();
     }
   });
 }
@@ -260,7 +255,7 @@ function createValidationsClass(inheritedValidationsClass, validations, model) {
       });
     },
 
-    destroy() {
+    willDestroy() {
       this._super(...arguments);
       let validatableAttrs = get(this, 'validatableAttributes');
       let debouncedValidations = get(this, '_debouncedValidations');
